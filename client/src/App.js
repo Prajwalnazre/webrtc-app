@@ -1,7 +1,7 @@
 import React from 'react';
 import { Typography, AppBar } from '@material-ui/core';
 import VideoPlayer from './components/VideoPlayer';
-import Notification from './components/Notifications';
+import Notifications from './components/Notifications';
 import Options from './components/Options';
 
 const App = () => {
@@ -11,8 +11,10 @@ const App = () => {
                 <Typography variant="h2" align="center">
                     Video Chat
                 </Typography>
-                {/* Video player */}
-                {/* Options -> notifications */}
+                <VideoPlayer />
+                <Options>
+                    <Notifications />
+                </Options>
             </AppBar>
         </div>
     )
