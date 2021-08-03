@@ -7,7 +7,7 @@ const SocketContext = createContext();
 
 const socket = io('http://localhost:5000');
 
-const ContextProvider = () => {
+const ContextProvider = ({children}) => {
 
     const [stream, setStream] = useState(null);
     const [me, setMe] = useState('');
@@ -86,4 +86,14 @@ const ContextProvider = () => {
         window.location.reload();
 
     }
+
+    return (
+        <SocketContext.Provider value={{ call, callAccepted, myVideo, userVideo, stream, name, setName, callEnded, me, callUser, leaveCall, answerCall,}}>
+            {children}
+        </SocketContext.Provider>
+
+    )
+
 }
+
+export { ContextProvider, SocketContext };
