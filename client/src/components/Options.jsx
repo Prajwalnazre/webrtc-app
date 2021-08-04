@@ -58,11 +58,39 @@ const Options = ({ children }) => {
                                 </Button>
                             </CopyToClipboard>
                         </Grid>
+                        <Grid item xs={12} md={6} className={classes.padding}>
+                            <Typography gutterBottom variant="h6">
+                                Make a Call 
+                            </Typography>
+                            <TextField fullWidth label="ID to Call" value={idToCall} onChange={(e) => setIdToCall(e.target.value)} />
+                            { callAccepted && !callEnded ? (
+                              <Button 
+                              variant="contained" 
+                              color="secondary" 
+                              startIcon={<PhoneDisabled fontSize="large" />}
+                              fullWidth
+                              onClick={leaveCall}
+                              className={classes.margin}
+                              >
+                                Hang Up
+                              </Button>
+                            ) : (
+                              <Button 
+                              variant="contained" 
+                              color="primary" 
+                              startIcon={<Phone fontSize="large" />}
+                              fullWidth
+                              onClick={() => callUser(idToCall)}
+                              className={classes.margin}
+                              >
+                                Call
+                              </Button>
+                            ) }
+                        </Grid>
                     </Grid>
                 </form>
+                { children }
             </Paper>
-            Options
-            { children }
         </Container>
     )
 }
